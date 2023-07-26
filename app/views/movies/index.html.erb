@@ -1,0 +1,33 @@
+<!-- app/views/movies/index.html.erb -->
+<style>
+.list-group-item {
+  cursor: pointer;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+.list-group-item h5 {
+  font-weight: bold;
+  color: #007bff;
+}
+</style>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="mb-4">All Movies</h1>
+      <div class="list-group">
+        <% @movies.each do |movie| %>
+          <%= link_to movie_path(movie), class: 'list-group-item list-group-item-action' do %>
+            <div class="d-flex justify-content-between">
+              <h5 class="mb-1"><%= movie.title %></h5>
+              <span class="badge bg-primary">Release Year: <%= movie.release_year %></span>
+            </div>
+            <p class="mb-1"><strong>Plot:</strong> <%= truncate(movie.plot, length: 100) %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

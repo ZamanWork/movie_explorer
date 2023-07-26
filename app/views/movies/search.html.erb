@@ -2,15 +2,7 @@
 
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <h1 class="mb-4">Movie Explorer</h1>
-      <%= form_with url: movies_search_path, method: :get, class: 'mb-4' do |form| %>
-        <div class="input-group">
-          <%= form.text_field :title, class: 'form-control', placeholder: 'Enter movie title' %>
-          <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-      <% end %>
-
+    <div class="col-md-6 offset-md-3 border-bottom">
       <% if @movie_data %>
         <% if @movie_data['Response'] == 'True' %>
           <h2 class="mt-4"><%= @movie_data['Title'] %></h2>
@@ -19,10 +11,15 @@
           <% if @movie_data['Poster'] != 'N/A' %>
             <%= image_tag @movie_data['Poster'], alt: @movie_data['Title'], class: 'img-fluid rounded' %>
           <% end %>
+          <%= button_to "Add to Our Movies", movies_path(movie_data: @movie_data ), method: :post, class: 'btn btn-dark my-3' %>
         <% else %>
           <p class="mt-4">No movie found with the given title.</p>
         <% end %>
       <% end %>
     </div>
   </div>
+  <div class="row justify-content-center ">
+    <%= link_to "Go back to all Movies", root_path, class: "btn btn-primary mt-3 col-3"%>
+  </div>
+
 </div>

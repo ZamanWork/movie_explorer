@@ -40,6 +40,8 @@ gem "redis", "~> 4.0"
 gem 'httparty'
 
 
+gem 'faker'
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -69,7 +71,12 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  #for unit testing
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
+
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
