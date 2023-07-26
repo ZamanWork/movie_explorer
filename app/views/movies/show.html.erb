@@ -1,0 +1,46 @@
+<!-- app/views/movies/show.html.erb -->
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="mb-4"><%= @movie.title %></h1>
+      <p><strong>Release Year:</strong> <%= @movie.release_year %></p>
+      <p><strong>Plot:</strong> <%= @movie.plot %></p>
+      <% if @movie.poster_url.present? %>
+        <%= image_tag @movie.poster_url, alt: @movie.title, class: 'img-fluid rounded mb-3' %>
+      <% end %>
+
+      <h2 class="mt-4">Personal Rating</h2>
+      <% if @rating %>
+        <p>Your rating: <%= @rating.value %>/10</p>
+        <%= form_with model: @rating, url: movie_rating_path(@movie, @rating), method: :patch do |form| %>
+          <%= form.range_field :value, in: 1..10, class: 'form-range', step: 1 %>
+          <button type="submit" class="btn btn-primary mt-3">Update Rating</button>
+        <% end %>
+      <% else %>
+        <%= form_with model: @rating, url: movie_ratings_path(@movie) do |form| %>
+          <%= form.range_field :value, in: 1..10, class: 'form-range', step: 1 %>
+          <button type="submit" class="btn btn-primary mt-3">Add Rating</button>
+        <% end %>
+      <% end %>
+
+      <h2 class="mt-4">Comments</h2>
+      <% if @comments.any? %>
+        <% @comments.each do |comment| %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <p class="card-text"><%= comment.text %></p>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No comments yet.</p>
+      <% end %>
+
+      <%= form_with model: Comment.new, url: movie_comments_path(@movie) do |form| %>
+        <%= form.text_area :text, class: 'form-control', placeholder: 'Add a comment' %>
+        <button type="submit" class="btn btn-primary mt-3">Submit Comment</button>
+      <% end %>
+    </div>
+  </div>
+</div>
