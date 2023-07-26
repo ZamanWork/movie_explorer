@@ -22,11 +22,10 @@ class MoviesController < ApplicationController
 
   def create
     @movie_data = params[:movie_data]
-    existing_movie = Movie.find_by(title: @movie_data['Title'])
+    existing_movie = Movie.find_by(title: @movie_data['Title']) if @movie_data
     if existing_movie
       redirect_to existing_movie, alert: 'Movie already exists.'
     else
-      @movie_data = params[:movie_data]
       @movie = Movie.new(title: @movie_data['Title'], release_year: @movie_data['Year'], plot: @movie_data['Plot'], poster_url: @movie_data['Poster'])
       respond_to do |format|
         if @movie.save
