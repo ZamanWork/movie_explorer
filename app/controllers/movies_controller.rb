@@ -6,6 +6,9 @@ class MoviesController < ApplicationController
 
   def search
     if params[:title].present?
+      present_movie = Movie.where('lower(title) = ?', params[:title].downcase).first
+      redirect_to present_movie if present_movie
+
       @movie_data = OmdbService.search_movie_by_title(params[:title])
     else
       @movie_data = nil
