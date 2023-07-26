@@ -1,0 +1,10 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <%= link_to 'Movie Explorer', root_path, class: 'navbar-brand' %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item <%= 'active' if current_page?(movies_path) %>">
+          <%= link_to 'All Movies', movies_path, class: 'nav-link' %>
+        </li>
+      </ul>
+    </div>
+</nav>

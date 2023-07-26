@@ -1,5 +1,7 @@
 <!-- app/views/movies/show.html.erb -->
 
+
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-6 offset-md-3">
@@ -20,6 +22,7 @@
       <% else %>
         <%= form_with model: @rating, url: movie_ratings_path(@movie) do |form| %>
           <%= form.range_field :value, in: 1..10, class: 'form-range', step: 1 %>
+          <output for="value" onforminput="value = value.valueAsNumber;"></output>
           <button type="submit" class="btn btn-primary mt-3">Add Rating</button>
         <% end %>
       <% end %>
@@ -38,8 +41,8 @@
       <% end %>
 
       <%= form_with model: Comment.new, url: movie_comments_path(@movie) do |form| %>
-        <%= form.text_area :text, class: 'form-control', placeholder: 'Add a comment' %>
-        <button type="submit" class="btn btn-primary mt-3">Submit Comment</button>
+        <%= form.text_area :text, class: 'form-control comment-area', placeholder: 'Add a comment' %>
+        <button type="submit" class="btn btn-primary mt-3" disabled>Submit Comment</button>
       <% end %>
     </div>
   </div>

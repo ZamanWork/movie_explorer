@@ -10,31 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_103151) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_26_104557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.bigint "movie_id", null: false
     t.string "user"
-    t.text "text"
+    t.text "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_comments_on_movie_id"
   end
 
   create_table "movies", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.string "release_year"
     t.text "plot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "poster_url"
   end
 
   create_table "ratings", force: :cascade do |t|
     t.bigint "movie_id", null: false
     t.string "user"
-    t.integer "value"
+    t.integer "value", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_ratings_on_movie_id"
