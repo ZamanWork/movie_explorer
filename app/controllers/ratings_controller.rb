@@ -2,6 +2,7 @@ class RatingsController < ApplicationController
   def create
     @movie = Movie.find(params[:movie_id])
     @rating = @movie.ratings.new(rating_params)
+    @rating.user = 'user123'
 
     respond_to do |format|
       if @rating.save

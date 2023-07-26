@@ -20,7 +20,7 @@
           <button type="submit" class="btn btn-primary mt-3">Update Rating</button>
         <% end %>
       <% else %>
-        <%= form_with model: @rating, url: movie_ratings_path(@movie) do |form| %>
+        <%= form_with model: @new_rating, url: movie_ratings_path(@movie) do |form| %>
           <%= form.range_field :value, in: 1..10, class: 'form-range', step: 1 %>
           <output for="value" onforminput="value = value.valueAsNumber;"></output>
           <button type="submit" class="btn btn-primary mt-3">Add Rating</button>
@@ -42,7 +42,7 @@
 
       <%= form_with model: Comment.new, url: movie_comments_path(@movie) do |form| %>
         <%= form.text_area :text, class: 'form-control comment-area', placeholder: 'Add a comment' %>
-        <button type="submit" class="btn btn-primary mt-3" disabled>Submit Comment</button>
+        <button type="submit" class="btn btn-primary mt-3">Submit Comment</button>
       <% end %>
     </div>
   </div>

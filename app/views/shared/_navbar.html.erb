@@ -2,8 +2,8 @@
     <div class="container">
       <%= link_to 'Movie Explorer', root_path, class: 'navbar-brand' %>
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item <%= 'active' if current_page?(movies_path) %>">
-          <%= link_to 'All Movies', movies_path, class: 'nav-link' %>
+        <li class="nav-item">
+          <%= render 'shared/search_movie_form' %>
         </li>
       </ul>
     </div>

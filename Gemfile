@@ -71,7 +71,12 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  #for unit testing
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
+
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
