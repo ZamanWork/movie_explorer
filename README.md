@@ -68,8 +68,8 @@ docker-compose run web rails db:create
 docker-compose up
 ```
 
-### How to Use
-## Search for Movies:
+## How to Use
+### Search for Movies:
 Use the search bar on the homepage to search for movies by title or keywords.
 The application will fetch movie details from a public API and display the search results.
 
